@@ -21,8 +21,11 @@ function SignIn() {
       setEmailError(true);
     }
     if (formData.username && formData.email) {
-      // navigate("/app");
       setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/app");
+      }, 3000);
     }
   };
   return (
@@ -70,8 +73,8 @@ function SignIn() {
           <button
             type="submit"
             className={`bg-slate-600 ${
-              loading ? "w-2/5" : "w-1/5"
-            }  m-auto mt-3 h-12 rounded-lg text-white hover:bg-slate-800 active:bg-slate-800 focus:outline-none focus:ring focus:ring-violet-100 transition duration-500 ease-in`}
+              loading ? "w-fit" : "w-1/5"
+            }  m-auto mt-3 h-12 rounded-lg text-white hover:bg-slate-800 active:bg-slate-800 focus:outline-none focus:ring focus:ring-violet-100 transition duration-500 ease-in signInBtn`}
           >
             {loading ? (
               <div className="flex items-center ">
@@ -87,7 +90,7 @@ function SignIn() {
                   strokeWidth={4}
                   strokeWidthSecondary={5}
                 />
-                <p className="ml-3">Processing...</p>
+                <p className="m-3 ">Processing...</p>
               </div>
             ) : (
               "Submit"
